@@ -42,7 +42,7 @@ app.get("/people/country/:country", async (req, res, next) => {
   const { country } = req.params;
 
   const peopleByCountry = data.filter(
-    (selectedCoutry) => selectedCoutry.country === country
+    (selectedCoutry) => selectedCoutry.country.replace(/\s+/g, '').toLowerCase() === country
   );
 
   if (!peopleByCountry) {
@@ -70,7 +70,7 @@ app.get("/people/profession/:profession", async (req, res, next) => {
   const { profession } = req.params;
 
   const peopleByProfession = data.filter(
-    (selectedProfession) => selectedProfession.profession === profession
+    (selectedProfession) => selectedProfession.profession.replace(/\s+/g, '').toLowerCase() === profession
   );
 
   if (!peopleByProfession) {
